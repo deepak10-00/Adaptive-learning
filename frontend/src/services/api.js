@@ -222,7 +222,13 @@ export const api = {
 const mockApi = {
     login: async (email, password, role) => {
         await new Promise(r => setTimeout(r, 200));
-        const userRole = role || "STUDENT";
+        let userRole = role;
+        if (!userRole) {
+            if (email.includes("hod")) userRole = "HOD";
+            else if (email.includes("prof")) userRole = "PROFESSOR";
+            else userRole = "STUDENT";
+        }
+
         const name = userRole === "PROFESSOR" ? "Professor Smith" :
             userRole === "HOD" ? "Department Head" :
                 "Alex Johnson"; // Default student name

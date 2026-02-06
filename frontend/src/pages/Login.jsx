@@ -27,7 +27,10 @@ const Login = () => {
 
                 // Redirect based on returned user role
                 const userRole = response.user.role ? response.user.role.toUpperCase() : '';
+                console.log("Login Success. Role:", userRole); // DEBUG LOG
+
                 if (userRole === 'HOD') {
+                    console.log("Redirecting to HOD Dashboard");
                     navigate('/hod-dashboard');
                 } else if (userRole === 'PROFESSOR') {
                     navigate('/dashboard'); // Prof dashboard

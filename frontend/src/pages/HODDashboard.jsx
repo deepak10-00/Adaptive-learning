@@ -3,7 +3,10 @@ import Navbar from '../components/Navbar';
 import { api } from '../services/api';
 import { Users, GraduationCap, TrendingUp, AlertTriangle, BookOpen, User } from 'lucide-react';
 
-const HODDashboard = ({ user }) => {
+const HODDashboard = () => {
+    // Determine user from localStorage since it's not passed as a prop
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
